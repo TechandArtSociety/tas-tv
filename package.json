@@ -1,0 +1,37 @@
+{
+  "name": "tas-tv",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "next build",
+    "start": "node scripts/dev.mjs --production",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "media:copy": "node scripts/copy-media.mjs"
+  },
+  "dependencies": {
+    "embedded-postgres": "latest",
+    "next": "16.4.3",
+    "postgres": "latest",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.3",
+    "typescript": "^5",
+    "vitest": "latest"
+  },
+  "packageManager": "pnpm@10.33.1",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "embedded-postgres",
+      "@embedded-postgres/darwin-arm64"
+    ]
+  }
+}

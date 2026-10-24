@@ -1,0 +1,102 @@
+[
+  {
+    "file": "lddmp-ep02-v12-en.mp4",
+    "source": "00_VIDEOS_FINALES/LES_DISQUES_DE_MON_PERE_EP02/EP02_EN_SILLAGE_HORIZONTAL_v8.mp4",
+    "title": "Les Disques de mon père — EP02 · En sillage",
+    "creator": "Les Disques de mon père",
+    "lang": "en",
+    "duration_s": 183,
+    "rights": "cleared",
+    "rights_note": "Lionel a déclaré le 24/10/2026 disposer des droits de diffusion des épisodes Les Disques de mon père (R-09)."
+  },
+  {
+    "file": "summer-breeze-v4-en.mp4",
+    "source": "00_VIDEOS_FINALES/SUMMER_BREEZE/SUMMER_BREEZE_V4_FINAL_EN_STEN_1080P.mp4",
+    "title": "Summer Breeze",
+    "creator": "Tech & Art Society",
+    "lang": "en",
+    "duration_s": 213,
+    "rights": "cleared",
+    "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo)."
+  },
+  {
+    "file": "sunday-jams-1080.mp4",
+    "source": "00_VIDEOS_FINALES/SEQUENCE_SUNDAY_JAMS/SEQUENCE_FINAL_A_LIRE_1080p.mp4",
+    "title": "Sunday Jams",
+    "creator": "Tech & Art Society",
+    "lang": "en",
+    "duration_s": 61,
+    "rights": "cleared",
+    "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo)."
+  },
+  {
+    "file": "kayo-birth-v6.mp4",
+    "source": "08_MEDIA_STUDIO/KAYO_BIRTH_TEASER/EXPORTS_V6_2026-09-15/KAYO_BIRTH_V6_HORIZONTAL_1080P_EN_STFR.mp4",
+    "title": "Kayo Birth — V6",
+    "creator": "Tech & Art Society",
+    "lang": "en",
+    "duration_s": 91,
+    "rights": "cleared",
+    "rights_note": "Production TAS, catalogue de démonstration."
+  },
+  {
+    "file": "mag-001-teaser.mp4",
+    "source": "08_MEDIA_STUDIO/TEASER_MAG_001/v1_2026-09-02/TEASER_MAG_001_v1_1080p.mp4",
+    "title": "TAS MAG 001 — teaser",
+    "creator": "Tech & Art Society",
+    "lang": "fr",
+    "duration_s": 26,
+    "rights": "cleared",
+    "rights_note": "Publicité maison TAS."
+  },
+  {
+    "file": "kayo-explains-facts-cost-money-en.mp4",
+    "source": "08_MEDIA_STUDIO/KAYO_EXPLAINER/episodes/2026-10-14_FACTS_COST_MONEY/exports/PUBLICATION_FACTS_COST_MONEY_EN.mp4",
+    "title": "Kayo explique — Facts Cost Money",
+    "creator": "Tech & Art Society",
+    "lang": "en",
+    "duration_s": 92,
+    "rights": "cleared",
+    "rights_note": "Épisode Kayo explique du catalogue TAS."
+  },
+  {
+    "file": "kayo-explains-facts-cost-money-fr.mp4",
+    "source": "08_MEDIA_STUDIO/KAYO_EXPLAINER/episodes/2026-10-14_FACTS_COST_MONEY_FR/exports/PUBLICATION_LES_FAITS_COUTENT_CHER_FR.mp4",
+    "title": "Kayo explique — Les faits coûtent cher",
+    "creator": "Tech & Art Society",
+    "lang": "fr",
+    "duration_s": 89,
+    "rights": "cleared",
+    "rights_note": "Épisode Kayo explique du catalogue TAS."
+  },
+  {
+    "file": "kayo-explains-fake-listeners-en.mp4",
+    "source": "08_MEDIA_STUDIO/KAYO_EXPLAINER/episodes/2026-10-14_FAKE_LISTENERS/exports/PUBLICATION_FAKE_LISTENERS_EN.mp4",
+    "title": "Kayo explique — Fake Listeners",
+    "creator": "Tech & Art Society",
+    "lang": "en",
+    "duration_s": 97,
+    "rights": "cleared",
+    "rights_note": "Épisode Kayo explique du catalogue TAS."
+  },
+  {
+    "file": "kayo-explains-fake-listeners-fr.mp4",
+    "source": "08_MEDIA_STUDIO/KAYO_EXPLAINER/episodes/2026-10-14_FAKE_LISTENERS_FR/exports/PUBLICATION_FAUX_AUDITEURS_FR.mp4",
+    "title": "Kayo explique — Faux auditeurs",
+    "creator": "Tech & Art Society",
+    "lang": "fr",
+    "duration_s": 104,
+    "rights": "cleared",
+    "rights_note": "Épisode Kayo explique du catalogue TAS."
+  },
+  {
+    "file": "kayo-explains-the-door-en.mp4",
+    "source": "08_MEDIA_STUDIO/KAYO_EXPLAINER/episodes/2026-10-14_THE_DOOR/exports/PUBLICATION_THE_DOOR_EN.mp4",
+    "title": "Kayo explique — The Door",
+    "creator": "Tech & Art Society",
+    "lang": "en",
+    "duration_s": 92,
+    "rights": "cleared",
+    "rights_note": "Épisode Kayo explique du catalogue TAS."
+  }
+]
