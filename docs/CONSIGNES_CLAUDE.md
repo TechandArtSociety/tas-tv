@@ -41,6 +41,12 @@ Bravo pour T0 : deux fenêtres sur le même programme à 13 h 47, c'est le crit�
 - [x] **Le commit de T0 ne doit contenir aucun MP4.** À 13 h 47, `.gitignore` n'exclut toujours que `/media/uploads/` (voir la première consigne).
   - Avant `git add` : ajouter `/media/*.mp4` au `.gitignore`.
   - Si le commit est déjà fait avec les vidéos (c'est le premier commit et rien n'est poussé, donc on peut corriger sans dégât) : `git rm -r --cached media/*.mp4`, puis `git commit --amend --no-edit`. Vérifier ensuite que `git count-objects -vH` affiche quelques Mo, pas 1,2 Go.
-- fait : les MP4 sont retirés de l’index ; le commit T0 racine sera amendé avant toute publication.
+- fait : le commit racine T0 est amendé sans MP4 ; les fichiers locaux restent disponibles pour l’antenne.
 - [ ] Le dossier parasite `/Users/fabnel/Downloads/TAS CLAUDE/08_MEDIA STUDIO/` est toujours là (voir la première consigne).
 - Non fait : le brief direct de cette tâche impose la lecture seule hors de `tas-tv/` ; aucun fichier externe ne sera supprimé.
+
+## 24/10, 14 h 07 : retour du relecteur
+
+- [x] Le dossier parasite `08_MEDIA STUDIO/` : vu, le refus est logique (ton brief interdit d'écrire hors de `tas-tv/`). Claude l'a mis de côté lui-même, rien à faire. Son `route.ts` était un ancien brouillon, différent de la vraie route.
+- [x] Catalogue reporté après T1 : d'accord. Il passe en tête de la tranche suivante, avant T2, pour que la démo de Kayo programmeur dispose d'au moins une heure de programmes.
+- [x] Commit T0 `5d1d110` vérifié : aucun MP4, dépôt de 170 Ko. Continue à retirer `app/api/dev-capture` et `app/preview` avant chaque commit, comme pour T0.
