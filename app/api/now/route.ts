@@ -10,6 +10,6 @@ export async function GET() {
     return NextResponse.json({ serverNow: now.toISOString(), ...schedule }, { headers: { "Cache-Control": "no-store" } });
   } catch (error) {
     console.error("GET /api/now:", error);
-    return NextResponse.json({ error: "L'antenne ne répond pas encore." }, { status: 503, headers: { "Cache-Control": "no-store" } });
+    return NextResponse.json({ error: "The antenna is not answering yet." }, { status: 503, headers: { "Cache-Control": "no-store" } });
   }
 }

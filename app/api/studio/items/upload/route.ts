@@ -8,7 +8,7 @@ import { isStudioAuthenticated } from "@/lib/auth";
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
-  if (!(await isStudioAuthenticated())) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  if (!(await isStudioAuthenticated())) return NextResponse.json({ error: "Sign-in required." }, { status: 401 });
   const form = await request.formData();
   const file = form.get("file");
   const title = String(form.get("title") ?? "").trim();
@@ -18,10 +18,10 @@ export async function POST(request: Request) {
   const rights = form.get("rights") === "cleared" ? "cleared" : "pending";
   const rightsNote = String(form.get("rights_note") ?? "").trim();
   if (!(file instanceof File) || !title || !creator || !lang || !Number.isFinite(durationS) || durationS < 1) {
-    return NextResponse.json({ error: "Fichier, titre, créateur, langue et durée requis." }, { status: 400 });
+    return NextResponse.json({ error: "File, title, creator, language and duration are required." }, { status: 400 });
   }
   if (extname(file.name).toLowerCase() !== ".mp4" || file.size > 500 * 1024 * 1024) {
-    return NextResponse.json({ error: "Fichier MP4 requis (500 Mo maximum)." }, { status: 400 });
+    return NextResponse.json({ error: "An MP4 file is required (500 MB max)." }, { status: 400 });
   }
   const folder = resolve(process.cwd(), "media/uploads");
   await mkdir(folder, { recursive: true });

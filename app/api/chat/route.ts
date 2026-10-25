@@ -34,23 +34,23 @@ export async function POST(request: Request) {
   const ip = clientIp(request);
   const now = Date.now();
   if (lastPost.size > 5000) for (const [key, at] of lastPost) if (now - at > 5000) lastPost.delete(key);
-  if (now - (lastPost.get(ip) ?? 0) < 5000) return NextResponse.json({ error: "Un message toutes les 5 secondes, s'il te plaît." }, { status: 429 });
+  if (now - (lastPost.get(ip) ?? 0) < 5000) return NextResponse.json({ error: "One message every 5 seconds, please." }, { status: 429 });
 
   let input: { nick?: string; body?: string };
   try {
     input = (await request.json()) ?? {};
   } catch {
-    return NextResponse.json({ error: "Requête invalide." }, { status: 400 });
+    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
   const nick = clean(input.nick, 24);
   const body = clean(input.body, 300);
-  if (Array.from(nick).length < 2) return NextResponse.json({ error: "Choisis un pseudo de 2 caractères au moins." }, { status: 400 });
-  if (!body) return NextResponse.json({ error: "Le message est vide." }, { status: 400 });
-  if (/^kayo$/i.test(nick)) return NextResponse.json({ error: "Ce pseudo est réservé." }, { status: 400 });
+  if (Array.from(nick).length < 2) return NextResponse.json({ error: "Pick a nickname of at least 2 characters." }, { status: 400 });
+  if (!body) return NextResponse.json({ error: "The message is empty." }, { status: 400 });
+  if (/^kayo$/i.test(nick)) return NextResponse.json({ error: "This nickname is reserved." }, { status: 400 });
   lastPost.set(ip, now);
 
   const verdict = await isAllowedMessage(`${nick}: ${body}`);
-  if (!verdict.allowed) return NextResponse.json({ error: "Message refusé par la modération.", moderation: verdict.by }, { status: 422 });
+  if (!verdict.allowed) return NextResponse.json({ error: "Message blocked by moderation.", moderation: verdict.by }, { status: 422 });
 
   const sql = db();
   const [message] = await sql`insert into chat_messages (nick, body) values (${nick}, ${body}) returning id`;
@@ -60,7 +60,7 @@ export async function POST(request: Request) {
     const onAir = await onAirProgram(new Date());
     let answer = await kayoAnswer(body.replace(/@kayo\b/gi, "").trim(), onAir);
     // R-11 applies to Kayo too: a flagged answer is replaced by the bare program card
-    if (!(await isAllowedMessage(answer)).allowed) answer = onAir ? `À l'antenne : « ${onAir.title} », ${onAir.creator}.` : "Rien à l'antenne pour le moment.";
+    if (!(await isAllowedMessage(answer)).allowed) answer = onAir ? `On air: "${onAir.title}", by ${onAir.creator}.` : "Nothing on air right now.";
     await sql`insert into chat_messages (nick, body, by_kayo) values ('Kayo', ${clean(answer, 300)}, true)`;
   }
   return NextResponse.json({ id: message.id, moderation: verdict.by });

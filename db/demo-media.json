@@ -2,7 +2,7 @@
   {
     "file": "lddmp-ep02-v12-en.mp4",
     "source": "00_VIDEOS_FINALES/LES_DISQUES_DE_MON_PERE_EP02/EP02_EN_SILLAGE_HORIZONTAL_v8.mp4",
-    "title": "Les Disques de mon père — EP02 · Gbeti Madjro",
+    "title": "Les Disques de mon père, EP02: Gbeti Madjro",
     "creator": "Les Disques de mon père",
     "channel_url": "https://techandartsociety.com",
     "lang": "en",
@@ -15,12 +15,12 @@
       "archives"
     ],
     "mood": "chaleureux",
-    "summary": "Lionel ouvre un disque de la collection de son père : « Gbeti Madjro », du Tout-Puissant Orchestre Poly-Rythmo de Cotonou avec Angélique Kidjo (album Cotonou Club, Strut Records, 2011). Version anglaise."
+    "summary": "Lionel opens a record from his father's collection: \"Gbeti Madjro\" by the Tout-Puissant Orchestre Poly-Rythmo de Cotonou with Angélique Kidjo (album Cotonou Club, Strut Records, 2011). English version."
   },
   {
     "file": "lddmp-ep02-fr.mp4",
     "source": "00_VIDEOS_FINALES/LES_DISQUES_DE_MON_PERE_EP02/EP02_FR_HORIZONTAL_v8.mp4",
-    "title": "Les Disques de mon père — EP02 · Gbeti Madjro (FR)",
+    "title": "Les Disques de mon père, EP02: Gbeti Madjro (French)",
     "creator": "Les Disques de mon père",
     "channel_url": "https://techandartsociety.com",
     "lang": "fr",
@@ -33,7 +33,7 @@
       "archives"
     ],
     "mood": "chaleureux",
-    "summary": "La version française de l'épisode 2 : « Gbeti Madjro », du Tout-Puissant Orchestre Poly-Rythmo de Cotonou avec Angélique Kidjo (album Cotonou Club, Strut Records, 2011)."
+    "summary": "The French version of episode 2: \"Gbeti Madjro\" by the Tout-Puissant Orchestre Poly-Rythmo de Cotonou with Angélique Kidjo (Cotonou Club, Strut Records, 2011)."
   },
   {
     "file": "summer-breeze-v4-en.mp4",
@@ -50,7 +50,7 @@
       "court métrage"
     ],
     "mood": "contemplatif",
-    "summary": "Court métrage de TAS Studio, voix off et sous-titres en anglais."
+    "summary": "A short film by TAS Studio, with an English voice-over and subtitles."
   },
   {
     "file": "sunday-jams-1080.mp4",
@@ -68,7 +68,7 @@
       "photo"
     ],
     "mood": "énergique",
-    "summary": "Séquence Sunday Jams signée Third Eye Shot, le regard photo de Lionel."
+    "summary": "A Sunday Jams sequence by Third Eye Shot, Lionel's photography eye."
   },
   {
     "file": "kayo-birth-v6.mp4",
@@ -86,12 +86,12 @@
       "kayo"
     ],
     "mood": "épique",
-    "summary": "La naissance de Kayo, le présentateur IA de Tech & Art Society. Film court, sous-titres français."
+    "summary": "The birth of Kayo, the AI host of Tech & Art Society. A short film with French subtitles."
   },
   {
     "file": "ooo-projection.mp4",
     "source": "08_MEDIA_STUDIO/PROJECTIONS_OOO_DESIGN_WEEK_2026-09-18/MONTAGE_V1/MASTERS_SANS_QR/OOO_PROJECTION_DEFINITIF_1080p.mp4",
-    "title": "Out of Office — Projection Design Week",
+    "title": "Out of Office, the Design Week projection",
     "creator": "Tech & Art Society",
     "channel_url": "https://techandartsociety.com",
     "lang": "en",
@@ -104,12 +104,12 @@
       "événement"
     ],
     "mood": "hypnotique",
-    "summary": "La projection créée pour la soirée Out of Office pendant la Paris Design Week (18 septembre 2026) : la foule, les machines, les pages du MAG 001."
+    "summary": "The projection made for the Out of Office night during Paris Design Week (18 September 2026): the crowd, the machines, the pages of MAG 001."
   },
   {
     "file": "ooo-projection-lente.mp4",
     "source": "08_MEDIA_STUDIO/PROJECTIONS_OOO_DESIGN_WEEK_2026-09-18/MONTAGE_V1/MASTERS_SANS_QR/OOO_PROJECTION_DEFINITIF_LENT50_1080p.mp4",
-    "title": "Out of Office — Projection, version lente",
+    "title": "Out of Office, slow version",
     "creator": "Tech & Art Society",
     "channel_url": "https://techandartsociety.com",
     "lang": "en",
@@ -122,12 +122,12 @@
       "nuit"
     ],
     "mood": "planant",
-    "summary": "La projection Out of Office de la Paris Design Week, ralentie de moitié : une version d'ambiance pour la nuit."
+    "summary": "The Out of Office projection from Paris Design Week, slowed down by half: an ambient version for the night."
   },
   {
     "file": "task-demo-en.mp4",
     "source": "08_MEDIA_STUDIO/TASK_DEMO_V3_2026-10-15/TASK_V3_DEMO_INVESTISSEURS_EN.mp4",
-    "title": "TASK — la démo, racontée par Kayo",
+    "title": "TASK, the demo told by Kayo",
     "creator": "Tech & Art Society",
     "channel_url": "https://techandartsociety.com",
     "lang": "en",
@@ -140,12 +140,12 @@
       "démo"
     ],
     "mood": "pédagogique",
-    "summary": "Kayo fait visiter TASK, l'application de TAS pour monter des projets créatifs à plusieurs : briefs, équipes, réseau de confiance. En anglais."
+    "summary": "Kayo walks through TASK, the TAS app for running creative projects together: briefs, teams, a trusted network. In English."
   },
   {
     "file": "task-demo-fr.mp4",
     "source": "08_MEDIA_STUDIO/TASK_DEMO_V3_2026-10-15/TASK_V3_DEMO_INVESTISSEURS_FR.mp4",
-    "title": "TASK — la démo, racontée par Kayo (FR)",
+    "title": "TASK, the demo told by Kayo (French)",
     "creator": "Tech & Art Society",
     "channel_url": "https://techandartsociety.com",
     "lang": "fr",
@@ -158,12 +158,12 @@
       "démo"
     ],
     "mood": "pédagogique",
-    "summary": "La version française de la visite de TASK par Kayo : briefs, équipes, réseau de confiance."
+    "summary": "The French version of Kayo's walk through TASK: briefs, teams, a trusted network."
   },
   {
     "file": "mag-001-teaser.mp4",
     "source": "00_VIDEOS_FINALES/KAYO/KAYO_HORIZONTAL_FINAL_30S.mp4",
-    "title": "TAS MAG 001 — teaser",
+    "title": "TAS MAG 001, teaser",
     "creator": "Tech & Art Society",
     "channel_url": "https://techandartsociety.com",
     "lang": "en",
@@ -176,12 +176,12 @@
       "kayo"
     ],
     "mood": "",
-    "summary": "Pub maison : Kayo annonce le MAG 001, le premier numéro du magazine de Tech & Art Society."
+    "summary": "House ad: Kayo announces MAG 001, the first issue of the Tech & Art Society magazine."
   },
   {
     "file": "teaser-do-you-en.mp4",
     "source": "08_MEDIA_STUDIO/TEASER_TAS_2026-10-15/exports/TEASER_TAS_DO_YOU_V1_EN.mp4",
-    "title": "Tech & Art Society — « Do you? »",
+    "title": "Tech & Art Society, \"Do you?\"",
     "creator": "Tech & Art Society",
     "channel_url": "https://techandartsociety.com",
     "lang": "en",
@@ -194,12 +194,12 @@
       "kayo"
     ],
     "mood": "",
-    "summary": "Pub maison : le teaser « Do you? » de Tech & Art Society, la suite de Kayo Birth."
+    "summary": "House ad: the \"Do you?\" teaser from Tech & Art Society, the sequel to Kayo Birth."
   },
   {
     "file": "teaser-do-you-fr.mp4",
     "source": "08_MEDIA_STUDIO/TEASER_TAS_2026-10-15/exports/TEASER_TAS_DO_YOU_V1_FR.mp4",
-    "title": "Tech & Art Society — « Do you? » (FR)",
+    "title": "Tech & Art Society, \"Do you?\" (French)",
     "creator": "Tech & Art Society",
     "channel_url": "https://techandartsociety.com",
     "lang": "fr",
@@ -212,6 +212,6 @@
       "kayo"
     ],
     "mood": "",
-    "summary": "Pub maison : le teaser « Do you? » en français."
+    "summary": "House ad: the \"Do you?\" teaser, in French."
   }
 ]

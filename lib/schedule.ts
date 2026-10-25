@@ -12,10 +12,10 @@ export type Program = {
 };
 
 export const DAYPARTS = [
-  { name: "nuit", from: 0, to: 7, label: "Nuit", likes: ["ambiance", "nuit", "planant", "hypnotique", "art", "contemplatif"] },
-  { name: "matin", from: 7, to: 12, label: "Matin", likes: ["musique", "archives", "chaleureux", "photo", "kayo", "film"] },
-  { name: "apres-midi", from: 12, to: 19, label: "Après-midi", likes: ["tech", "task", "démo", "pédagogique", "archives", "film"] },
-  { name: "soiree", from: 19, to: 24, label: "Soirée", likes: ["film", "live", "événement", "épique", "énergique", "art", "musique"] },
+  { name: "nuit", from: 0, to: 7, label: "Night", likes: ["ambiance", "nuit", "planant", "hypnotique", "art", "contemplatif"] },
+  { name: "matin", from: 7, to: 12, label: "Morning", likes: ["musique", "archives", "chaleureux", "photo", "kayo", "film"] },
+  { name: "apres-midi", from: 12, to: 19, label: "Afternoon", likes: ["tech", "task", "démo", "pédagogique", "archives", "film"] },
+  { name: "soiree", from: 19, to: 24, label: "Evening", likes: ["film", "live", "événement", "épique", "énergique", "art", "musique"] },
 ] as const;
 
 export type DaypartName = (typeof DAYPARTS)[number]["name"];
@@ -62,7 +62,7 @@ export function rulesRotations(programs: Program[]): Rotations {
     const chosen = scored.length >= 2 ? scored.map((entry) => entry.program) : programs;
     result[part.name] = {
       itemIds: interleave(chosen).map((program) => program.id),
-      reason: `${part.label} : ${likes.slice(0, 3).join(", ")}, d'après les fiches des programmes.`,
+      reason: `${part.label}: programs tagged ${likes.slice(0, 3).join(", ")} in their cards.`,
     };
   }
   return result;
@@ -119,7 +119,7 @@ export function layoutDay(options: {
       if (cursor + ad.duration_s * 1000 > end) break;
       slots.push({
         kind: "item", itemId: ad.id, startsAt: new Date(cursor), endsAt: new Date(cursor + ad.duration_s * 1000),
-        bumperText: null, bumperAudio: null, reason: "Pub maison TAS.",
+        bumperText: null, bumperAudio: null, reason: "TAS house ad.",
       });
       cursor += ad.duration_s * 1000;
       adIndex += 1;

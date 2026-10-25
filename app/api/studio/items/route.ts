@@ -28,7 +28,7 @@ async function getCreatorId(name: string, lang: string) {
 }
 
 export async function GET() {
-  if (!(await isStudioAuthenticated())) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  if (!(await isStudioAuthenticated())) return NextResponse.json({ error: "Sign-in required." }, { status: 401 });
   const sql = db();
   const items = await sql`
     select i.id, i.kind, i.src, i.title, i.duration_s, i.lang, i.rights, i.rights_note,
@@ -41,12 +41,12 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  if (!(await isStudioAuthenticated())) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  if (!(await isStudioAuthenticated())) return NextResponse.json({ error: "Sign-in required." }, { status: 401 });
   let input: ItemInput;
   try {
     input = await request.json();
   } catch {
-    return NextResponse.json({ error: "Requête invalide." }, { status: 400 });
+    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
   const title = input.title?.trim();
   const creator = input.creator?.trim();
@@ -54,16 +54,16 @@ export async function POST(request: Request) {
   const durationS = Number(input.duration_s);
   const rights = input.rights === "cleared" ? "cleared" : "pending";
   if (!title || !creator || !lang || !Number.isFinite(durationS) || durationS < 1 || durationS > 24 * 60 * 60) {
-    return NextResponse.json({ error: "Titre, créateur, langue et durée valide requis." }, { status: 400 });
+    return NextResponse.json({ error: "Title, creator, language and a valid duration are required." }, { status: 400 });
   }
   const kind = input.kind === "youtube" ? "youtube" : "file";
   let src = input.src?.trim() ?? "";
   if (kind === "youtube") {
     const match = src.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
-    if (!match) return NextResponse.json({ error: "Lien YouTube invalide." }, { status: 400 });
+    if (!match) return NextResponse.json({ error: "Invalid YouTube link." }, { status: 400 });
     src = match[1];
   } else if (!src.startsWith("/media/") || src.includes("..")) {
-    return NextResponse.json({ error: "Le fichier doit être dans media/." }, { status: 400 });
+    return NextResponse.json({ error: "The file must be in media/." }, { status: 400 });
   }
   const sql = db();
   const creatorId = await getCreatorId(creator, lang);
@@ -76,14 +76,14 @@ export async function POST(request: Request) {
 }
 
 export async function PATCH(request: Request) {
-  if (!(await isStudioAuthenticated())) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  if (!(await isStudioAuthenticated())) return NextResponse.json({ error: "Sign-in required." }, { status: 401 });
   let input: ItemInput & { id?: string };
   try {
     input = await request.json();
   } catch {
-    return NextResponse.json({ error: "Requête invalide." }, { status: 400 });
+    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
-  if (!input.id) return NextResponse.json({ error: "Identifiant requis." }, { status: 400 });
+  if (!input.id) return NextResponse.json({ error: "Id required." }, { status: 400 });
   const sql = db();
   const rows = await sql`
     update items set
@@ -92,6 +92,6 @@ export async function PATCH(request: Request) {
       rights_note = coalesce(${input.rights_note?.trim() || null}, rights_note)
     where id = ${input.id} returning id
   `;
-  if (!rows[0]) return NextResponse.json({ error: "Programme introuvable." }, { status: 404 });
+  if (!rows[0]) return NextResponse.json({ error: "Program not found." }, { status: 404 });
   return NextResponse.json({ ok: true });
 }

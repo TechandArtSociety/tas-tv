@@ -12,14 +12,14 @@ type ProgramRow = Program & { src: string };
 
 /** Kayo proposes a full day: rotations per daypart, his announcements, house ads. Saved as a draft for a human to publish. */
 export async function POST(request: Request, { params }: { params: Promise<{ day: string }> }) {
-  if (!(await isStudioAuthenticated())) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
+  if (!(await isStudioAuthenticated())) return NextResponse.json({ error: "Sign-in required." }, { status: 401 });
   const { day } = await params;
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(day) || !Number.isFinite(Date.parse(`${day}T12:00:00Z`))) return NextResponse.json({ error: "Date invalide." }, { status: 400 });
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(day) || !Number.isFinite(Date.parse(`${day}T12:00:00Z`))) return NextResponse.json({ error: "Invalid date." }, { status: 400 });
 
   const sql = db();
   const [current] = await sql<{ status: string }[]>`select status from grids where day = ${day}::date`;
   if (current?.status === "published" && new URL(request.url).searchParams.get("force") !== "1") {
-    return NextResponse.json({ error: "Cette grille est à l'antenne. Confirme pour la remplacer par une proposition en brouillon.", published: true }, { status: 409 });
+    return NextResponse.json({ error: "This grid is on air. Confirm to replace it with a draft proposal.", published: true }, { status: 409 });
   }
   const rows = await sql<ProgramRow[]>`
     select i.id, i.title, i.src, c.name as creator, i.duration_s, i.lang, i.tags, i.mood, i.summary
@@ -29,7 +29,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ day
   `;
   const programs = rows.filter((row) => !row.tags.includes("pub"));
   const ads = rows.filter((row) => row.tags.includes("pub"));
-  if (programs.length < 2) return NextResponse.json({ error: "Il faut au moins deux programmes avec droits OK." }, { status: 400 });
+  if (programs.length < 2) return NextResponse.json({ error: "At least two programs with cleared rights are needed." }, { status: 400 });
   const [settings] = await sql<{ ad_every_n_items: number }[]>`select ad_every_n_items from settings where id = 1`;
 
   const { rotations, source, note } = await proposeRotations(programs);
@@ -58,7 +58,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ day
     });
   } catch (error) {
     console.error("POST propose:", error);
-    return NextResponse.json({ error: "La proposition n'a pas pu être enregistrée." }, { status: 409 });
+    return NextResponse.json({ error: "The proposal could not be saved." }, { status: 409 });
   }
   return NextResponse.json({ source, note: note ?? null, rotations, slots: slots.length });
 }

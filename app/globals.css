@@ -201,3 +201,6 @@ button{cursor:pointer}
 .studio-reasons b{color:var(--ink);font-weight:600}
 .studio-slot-list{max-height:min(560px,60vh);overflow-y:auto;padding-right:6px;scrollbar-width:thin}
 .preload-next{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.topbar-right{display:flex;align-items:center;gap:16px}
+.lang-toggle{height:26px;padding:0 9px;background:transparent;border:1px solid var(--line);color:var(--muted);font-family:var(--mono);font-size:10px;letter-spacing:.12em}
+.lang-toggle:hover{border-color:var(--acid);color:var(--acid)}
