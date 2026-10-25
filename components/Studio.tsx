@@ -353,10 +353,10 @@ export function StudioDashboard() {
         <section className="studio-grid-layout">
           <div className="studio-panel studio-grid-panel">
             <div className="studio-panel-head">
-              <div><div className="studio-eyebrow">PROGRAMMATION QUOTIDIENNE</div><h2>La grille</h2></div>
+              <div><div className="studio-eyebrow">{tr("DAILY PROGRAMMING", "PROGRAMMATION QUOTIDIENNE")}</div><h2>{tr("The grid", "La grille")}</h2></div>
               <span className={`studio-status ${grid.status}`}>{grid.status === "published" ? tr("PUBLISHED", "PUBLIÉE") : tr("DRAFT", "BROUILLON")}</span>
             </div>
-            <div className="studio-day-row"><label htmlFor="grid-day">Jour de Paris</label><input id="grid-day" type="date" value={day} onChange={(event) => { setGridBusy(true); setDay(event.target.value); }} /></div>
+            <div className="studio-day-row"><label htmlFor="grid-day">{tr("Paris day", "Jour de Paris")}</label><input id="grid-day" type="date" value={day} onChange={(event) => { setGridBusy(true); setDay(event.target.value); }} /></div>
             <div className="studio-kayo-row">
               <p><strong>{tr("Kayo, plan the day.", "Kayo, propose la journée.")}</strong> {tr("He orders the programs by daypart and slots in his announcements and the house ads. Nothing airs until you publish.", "Il ordonne les programmes par tranche horaire, glisse ses annonces et les pubs maison. Rien ne passe à l’antenne sans ta publication.")}</p>
               <button className="studio-primary" onClick={() => void proposeDay()} disabled={busy || gridBusy}>{tr("Kayo, plan the day", "Kayo, propose la journée")}</button>
@@ -367,29 +367,29 @@ export function StudioDashboard() {
                 <li><b>Source</b> — {grid.proposal.source === "openai" ? tr("OpenAI API (Responses, Structured Outputs)", "API OpenAI (Responses, Structured Outputs)") : tr("local rules (no OpenAI key)", "règles locales (pas de clé OpenAI)")}</li>
               </ul>
             )}
-            {gridBusy ? <div className="studio-empty">Chargement de la grille…</div> : slots.length === 0 ? (
+            {gridBusy ? <div className="studio-empty">{tr("Loading the grid…", "Chargement de la grille…")}</div> : slots.length === 0 ? (
               <div className="studio-empty"><span>∅</span><strong>{tr("The day is still free.", "La journée est encore libre.")}</strong><small>{tr("Add programs, or ask Kayo to plan the day.", "Ajoute des programmes pour préparer l’antenne.")}</small></div>
             ) : (
               <ol className="studio-slot-list">
                 {slots.map((slot) => (
                   <li key={slot.id} className={`studio-slot ${slot.kind === "bumper" ? "is-bumper" : ""}`}>
-                    <input aria-label={`Heure de ${slot.title}`} type="time" value={inputTime(slot.starts_at)} onChange={(event) => changeSlotTime(slot.id, event.target.value)} />
+                    <input aria-label={tr(`Time of ${slot.title}`, `Heure de ${slot.title}`)} type="time" value={inputTime(slot.starts_at)} onChange={(event) => changeSlotTime(slot.id, event.target.value)} />
                     <div className="studio-slot-copy"><strong>{slot.title}</strong><span>{slot.creator} · {duration(slot.duration_s)}</span></div>
-                    <span className="studio-rights-tag cleared">{slot.kind === "bumper" ? "KAYO" : slot.tags?.includes("pub") ? "PUB" : "DROITS OK"}</span>
-                    <button className="studio-remove" aria-label={`Retirer ${slot.title}`} onClick={() => { setSlots((current) => current.filter((candidate) => candidate.id !== slot.id)); setGrid((current) => ({ ...current, status: "draft" })); }}>×</button>
+                    <span className="studio-rights-tag cleared">{slot.kind === "bumper" ? "KAYO" : slot.tags?.includes("pub") ? tr("AD", "PUB") : tr("CLEARED", "DROITS OK")}</span>
+                    <button className="studio-remove" aria-label={tr(`Remove ${slot.title}`, `Retirer ${slot.title}`)} onClick={() => { setSlots((current) => current.filter((candidate) => candidate.id !== slot.id)); setGrid((current) => ({ ...current, status: "draft" })); }}>×</button>
                   </li>
                 ))}
               </ol>
             )}
             <div className="studio-add-slot">
-              <label htmlFor="grid-item">Programme disponible</label>
+              <label htmlFor="grid-item">{tr("Available program", "Programme disponible")}</label>
               <div className="studio-add-row">
                 <select id="grid-item" value={selectedItem} onChange={(event) => setSelectedItem(event.target.value)}>
                   <option value="">{tr("Pick from the library…", "Choisir dans la bibliothèque…")}</option>
                   {clearedItems.map((item) => <option key={item.id} value={item.id}>{item.title} · {duration(item.duration_s)}</option>)}
                 </select>
                 <input aria-label={tr("Start time, Paris time", "Heure de début, heure de Paris")} type="time" value={startTime} onChange={(event) => setStartTime(event.target.value)} />
-                <button className="studio-secondary" onClick={addSlot} disabled={clearedItems.length === 0}>Ajouter</button>
+                <button className="studio-secondary" onClick={addSlot} disabled={clearedItems.length === 0}>{tr("Add", "Ajouter")}</button>
               </div>
               {clearedItems.length === 0 && <small>{tr("No video with cleared rights yet.", "Il n’y a pas encore de vidéo avec droits OK.")}</small>}
             </div>
@@ -410,7 +410,7 @@ export function StudioDashboard() {
                   <article className="studio-library-item" key={item.id}>
                     <div className="studio-item-type">{item.kind === "file" ? "MP4" : "YT"}</div>
                     <div className="studio-item-copy"><strong>{item.title}</strong><span>{item.creator} · {item.lang.toUpperCase()} · {duration(item.duration_s)}</span>{item.rights_note && <small>{item.rights_note}</small>}</div>
-                    <select aria-label={`Droits de ${item.title}`} value={item.rights} onChange={(event) => void updateRights(item.id, event.target.value as StudioItem["rights"])}>
+                    <select aria-label={tr(`Rights of ${item.title}`, `Droits de ${item.title}`)} value={item.rights} onChange={(event) => void updateRights(item.id, event.target.value as StudioItem["rights"])}>
                       <option value="cleared">{tr("Rights cleared", "Droits OK")}</option><option value="pending">{tr("To check", "À vérifier")}</option><option value="refused">{tr("Refused", "Refusés")}</option>
                     </select>
                   </article>
