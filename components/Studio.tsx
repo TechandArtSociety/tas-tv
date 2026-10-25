@@ -300,7 +300,9 @@ export function StudioDashboard() {
     setBusy(true);
     setNotice("Kayo prépare la journée…");
     try {
-      const result = await responseData<{ source: string; note: string | null; slots: number }>(await fetch(`/api/studio/grid/${day}/propose`, { method: "POST" }));
+      const force = grid.status === "published" && window.confirm("Cette grille est à l'antenne. La remplacer par la proposition de Kayo ? L'antenne passe sur la boucle de secours jusqu'à ce que tu publies.");
+      if (grid.status === "published" && !force) { setNotice("Grille à l'antenne conservée."); return; }
+      const result = await responseData<{ source: string; note: string | null; slots: number }>(await fetch(`/api/studio/grid/${day}/propose${force ? "?force=1" : ""}`, { method: "POST" }));
       await loadGrid(day);
       setNotice(`Proposition de Kayo (${result.source === "openai" ? "API OpenAI" : "règles"}) : ${result.slots} créneaux, annonces et pubs comprises. Relis-la, puis publie.${result.note ? ` ${result.note}` : ""}`);
     } catch (cause) {

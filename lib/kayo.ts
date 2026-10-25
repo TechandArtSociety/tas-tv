@@ -35,7 +35,7 @@ export async function proposeRotations(programs: Program[]): Promise<{ rotations
     const answer = await respond<{ dayparts: Array<{ name: DaypartName; item_ids: string[]; reason: string }> }>({
       step: "grid_proposal",
       promptVersion: "grid-v1",
-      maxOutputTokens: 4000,
+      maxOutputTokens: 8000, // reasoning models count their thinking in this budget
       schema: ROTATION_SCHEMA,
       instructions: [
         "Tu es Kayo, co-programmateur de TAS TV, une chaîne 24/7 de créateurs indépendants (Tech & Art Society, Paris).",
@@ -69,7 +69,7 @@ export async function kayoAnswer(question: string, onAir: OnAir): Promise<string
     const text = await respond<string>({
       step: "chat_answer",
       promptVersion: "chat-v1",
-      maxOutputTokens: 400,
+      maxOutputTokens: 1500,
       instructions: "Tu es Kayo, le présentateur IA de TAS TV. Réponds en 40 mots au plus, dans la langue de la question, uniquement à partir de la fiche du programme. Si la fiche ne contient pas la réponse, dis-le simplement. Aucun chiffre ni fait inventé.",
       input: `Fiche du programme : ${card}\n\nQuestion du spectateur : ${question}`,
     });

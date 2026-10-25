@@ -10,7 +10,9 @@ type SlotInput = { kind?: "item" | "bumper"; itemId?: string | null; startsAt?: 
 type RouteContext = { params: Promise<{ day: string }> };
 
 function validDay(value: string) {
-  return /^\d{4}-\d{2}-\d{2}$/.test(value) && Number.isFinite(Date.parse(`${value}T12:00:00Z`));
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const date = new Date(`${value}T12:00:00Z`);
+  return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === value; // rejects 2026-02-30
 }
 
 export async function GET(_request: Request, { params }: RouteContext) {
@@ -59,9 +61,11 @@ export async function PUT(request: Request, { params }: RouteContext) {
     const reason = slot.reason ? String(slot.reason).slice(0, 300) : null;
     if (slot.kind === "bumper") {
       const bumperText = String(slot.bumperText ?? "").slice(0, 200);
-      const bumperAudio = slot.bumperAudio && /^\/media\/kayo\/[a-z0-9-]+\.mp3$/.test(slot.bumperAudio) ? slot.bumperAudio : null;
+      const bumperAudio = slot.bumperAudio && /^\/media\/kayo\/[A-Za-z0-9_-][A-Za-z0-9._-]*\.mp3$/.test(slot.bumperAudio) && !slot.bumperAudio.includes("..") ? slot.bumperAudio : null;
       if (!bumperText) return NextResponse.json({ error: "Une annonce de Kayo doit avoir un texte." }, { status: 400 });
-      prepared.push({ kind: "bumper", itemId: null, startsAt, endsAt: new Date(startsAt.getTime() + BUMPER_S * 1000), bumperText, bumperAudio, reason });
+      const endsAt = new Date(startsAt.getTime() + BUMPER_S * 1000);
+      if (parisDay(new Date(endsAt.getTime() - 1)) !== day) return NextResponse.json({ error: "Une annonce ne peut pas dépasser minuit." }, { status: 400 });
+      prepared.push({ kind: "bumper", itemId: null, startsAt, endsAt, bumperText, bumperAudio, reason });
       continue;
     }
     const item = slot.itemId ? items.get(slot.itemId) : undefined;

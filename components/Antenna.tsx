@@ -38,9 +38,9 @@ export default function Antenna() {
   const [error, setError] = useState("");
 
   const refresh = useCallback(async () => {
-    const receivedAt = performance.now();
     try {
       const response = await fetch("/api/now", { cache: "no-store" });
+      const receivedAt = performance.now();
       const data = (await response.json()) as NowPayload;
       if (!response.ok) throw new Error(data.error ?? "Antenne indisponible");
       clockRef.current = { receivedAt };
@@ -85,7 +85,7 @@ export default function Antenna() {
     const elapsed = Math.max(0, (performance.now() - clockRef.current.receivedAt) / 1000);
     const target = Math.max(0, current.offsetS + elapsed);
     if (Math.abs(media.currentTime - target) > 2) media.currentTime = target;
-    if (started) void media.play().catch(() => setError("Le navigateur a bloqué la lecture. Appuie sur Reprendre."));
+    if (started && !media.ended) void media.play().catch(() => setError("Le navigateur a bloqué la lecture. Appuie sur Reprendre."));
   }, [current, isYouTube, isBumper, started]);
 
   const onLoadedMetadata = (event: React.SyntheticEvent<HTMLMediaElement>) => {
@@ -214,14 +214,18 @@ function LiveChat() {
 
   useEffect(() => {
     let alive = true;
+    let busy = false;
     const poll = async () => {
+      if (busy) return;
+      busy = true;
       try {
         const response = await fetch(`/api/chat?after=${lastId.current}`, { cache: "no-store" });
         const data = (await response.json()) as { messages?: ChatMessage[] };
-        if (!alive || !data.messages?.length) return;
-        lastId.current = data.messages.at(-1)!.id;
-        setMessages((current) => [...current, ...data.messages!].slice(-60));
-      } catch {}
+        const fresh = (data.messages ?? []).filter((message) => message.id > lastId.current);
+        if (!alive || !fresh.length) return;
+        lastId.current = fresh.at(-1)!.id;
+        setMessages((current) => [...current, ...fresh].slice(-60));
+      } catch {} finally { busy = false; }
     };
     void poll();
     const interval = window.setInterval(poll, 2000);

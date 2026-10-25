@@ -74,3 +74,13 @@ Commits `6170f0e` et suivants. Codex a construit T0 et T1 ; Claude a fait la sui
 - **Aucun appel OpenAI réel** : pas de clé dans `.env.local` cette nuit. Le code des appels (Responses + Structured Outputs, Moderation) est écrit d'après l'API REST, mais n'a pas tourné : à vérifier dès que Lionel colle la clé (« Kayo, propose la journée » doit afficher « API OpenAI » dans la source).
 - **Voix des annonces** : non générée (le modèle de voix local était trop lent, Mac saturé en mémoire ; ElevenLabs demande des téléchargements, que Lionel doit autoriser). Les annonces passent en carte muette.
 - T2 (transcription et sous-titres EN/FR), page Grille publique, formulaire créateur, masquage d'un message du chat depuis le studio, relais vers les réseaux, mise en ligne : non faits.
+
+### Relecture indépendante (25/10, vers 3 h) et corrections
+
+Une relecture du code et des appels OpenAI (d'après les sources des SDK officiels et developers.openai.com ; aucun appel réel) a demandé des corrections, faites dans le commit suivant :
+- « Kayo, propose la journée » ne retire plus une grille à l'antenne sans confirmation (409, puis confirmation dans le studio).
+- Chat : plus de doublons à l'affichage, réponses de Kayo modérées elles aussi (R-11), adresse IP prise au dernier relais, mémoire bornée, entrées bizarres refusées proprement au lieu d'une erreur 500.
+- Antenne : heure de référence prise à la réception de la réponse, pas de relecture d'une vidéo terminée, boucle de secours coupée à l'heure du prochain créneau.
+- Grille : vraies dates (le 30 février est refusé), annonces qui ne dépassent pas minuit, noms d'audio d'annonce des vidéos importées acceptés.
+- OpenAI : corps des requêtes Responses / Structured Outputs / Moderation conforme aux sources ; modèle par défaut `gpt-6.1-sol` (gpt-5-mini est déclaré obsolète), budgets de jetons relevés (les modèles qui raisonnent comptent leur réflexion dedans), réponse « incomplete » traitée comme un échec, avec repli sur les règles.
+- Non corrigé : modifier à la main un créneau dans l'heure de 2 h à 3 h du 25/10 (heure répétée) le place dans la deuxième occurrence.

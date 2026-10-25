@@ -1,5 +1,5 @@
 import { existsSync } from "node:fs";
-import { basename, resolve } from "node:path";
+import { basename, extname, resolve } from "node:path";
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { isStudioAuthenticated } from "@/lib/auth";
@@ -11,12 +11,16 @@ export const runtime = "nodejs";
 type ProgramRow = Program & { src: string };
 
 /** Kayo proposes a full day: rotations per daypart, his announcements, house ads. Saved as a draft for a human to publish. */
-export async function POST(_request: Request, { params }: { params: Promise<{ day: string }> }) {
+export async function POST(request: Request, { params }: { params: Promise<{ day: string }> }) {
   if (!(await isStudioAuthenticated())) return NextResponse.json({ error: "Connexion requise." }, { status: 401 });
   const { day } = await params;
   if (!/^\d{4}-\d{2}-\d{2}$/.test(day) || !Number.isFinite(Date.parse(`${day}T12:00:00Z`))) return NextResponse.json({ error: "Date invalide." }, { status: 400 });
 
   const sql = db();
+  const [current] = await sql<{ status: string }[]>`select status from grids where day = ${day}::date`;
+  if (current?.status === "published" && new URL(request.url).searchParams.get("force") !== "1") {
+    return NextResponse.json({ error: "Cette grille est à l'antenne. Confirme pour la remplacer par une proposition en brouillon.", published: true }, { status: 409 });
+  }
   const rows = await sql<ProgramRow[]>`
     select i.id, i.title, i.src, c.name as creator, i.duration_s, i.lang, i.tags, i.mood, i.summary
     from items i join creators c on c.id = i.creator_id
@@ -33,7 +37,8 @@ export async function POST(_request: Request, { params }: { params: Promise<{ da
   const slots = layoutDay({
     day, rotations, programs, ads, adEvery: settings?.ad_every_n_items ?? 2,
     bumperAudio: (program) => {
-      const file = `${basename((program as ProgramRow).src, ".mp4")}.mp3`;
+      const src = (program as ProgramRow).src;
+      const file = `${basename(src, extname(src))}.mp3`;
       return existsSync(resolve(kayoDir, file)) ? `/media/kayo/${file}` : null;
     },
   });

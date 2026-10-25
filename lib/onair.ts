@@ -51,6 +51,8 @@ export async function onAirSchedule(now: Date, limit = 8) {
     order by i.created_at, i.id
   `;
   const loop = fallback(items, now);
+  const nextGrid = slots[0] ? new Date(slots[0].startsAt) : null;
+  if (loop && nextGrid && new Date(loop.slot.endsAt) > nextGrid) loop.slot.endsAt = nextGrid; // the 00:00 announcement starts on time
   return { mode: loop ? ("fallback" as const) : ("waiting" as const), current: loop, slots: fallbackSlots(items, now, 4) };
 }
 

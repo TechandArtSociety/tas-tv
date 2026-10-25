@@ -5,7 +5,7 @@ import { db } from "./db";
 const API = "https://api.openai.com/v1";
 
 export const hasOpenAI = () => Boolean(process.env.OPENAI_API_KEY);
-export const textModel = () => process.env.OPENAI_MODEL || "gpt-5-mini";
+export const textModel = () => process.env.OPENAI_MODEL || "gpt-6.1-sol";
 
 async function post(path: string, body: unknown) {
   const response = await fetch(`${API}${path}`, {
@@ -19,7 +19,7 @@ async function post(path: string, body: unknown) {
   return data;
 }
 
-type ResponseOutput = { output?: Array<{ type: string; content?: Array<{ type: string; text?: string }> }>; usage?: { input_tokens?: number; output_tokens?: number } };
+type ResponseOutput = { status?: string; output?: Array<{ type: string; content?: Array<{ type: string; text?: string }> }>; usage?: { input_tokens?: number; output_tokens?: number } };
 
 function outputText(data: ResponseOutput) {
   return (data.output ?? []).flatMap((item) => item.content ?? []).filter((part) => part.type === "output_text").map((part) => part.text ?? "").join("");
@@ -51,6 +51,7 @@ export async function respond<T = string>(options: {
       ...(options.schema ? { text: { format: { type: "json_schema", name: options.schema.name, schema: options.schema.schema, strict: true } } } : {}),
     })) as ResponseOutput;
     const text = outputText(data);
+    if (data.status && data.status !== "completed") throw new Error(`réponse ${data.status}`);
     if (!text) throw new Error("réponse vide");
     await logRun({ step: options.step, model, promptVersion: options.promptVersion, input: options.input, usage: data.usage, ok: true });
     return (options.schema ? JSON.parse(text) : text) as T;
