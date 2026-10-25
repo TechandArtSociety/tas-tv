@@ -84,3 +84,27 @@ Une relecture du code et des appels OpenAI (d'après les sources des SDK officie
 - Grille : vraies dates (le 30 février est refusé), annonces qui ne dépassent pas minuit, noms d'audio d'annonce des vidéos importées acceptés.
 - OpenAI : corps des requêtes Responses / Structured Outputs / Moderation conforme aux sources ; modèle par défaut `gpt-6.1-sol` (gpt-5-mini est déclaré obsolète), budgets de jetons relevés (les modèles qui raisonnent comptent leur réflexion dedans), réponse « incomplete » traitée comme un échec, avec repli sur les règles.
 - Non corrigé : modifier à la main un créneau dans l'heure de 2 h à 3 h du 25/10 (heure répétée) le place dans la deuxième occurrence.
+
+## Dimanche 25/10 — anglais par défaut, préparation du jury
+
+Commits `c658fcb` à `3185d37`.
+
+### Fait
+
+- **Anglais par défaut**, français à la demande (bouton EN/FR en haut de l'antenne et du studio, choix gardé dans le navigateur) : antenne, chat, studio, messages d'erreur des API, raisons de Kayo. Les étiquettes et ambiances du catalogue sont passées en anglais (« pub » reste la marque des pubs maison).
+- **Kayo Birth** : remplacé par le montage du portfolio sans l'extrait d'*I, Robot* (droits d'un tiers).
+- **README, PROCESS et specs** en anglais pour le jury (`README.md`, `docs/PROCESS.md`) ; les quatre documents d'origine restent en français dans `docs/specs/`.
+- Grilles du 25/10 et du 26/10 reproposées (étiquettes anglaises) puis publiées, par règles.
+
+### Vérifié
+
+- Studio et antenne filmés en anglais (`../video/clips/05_studio.mp4`, `03_annonce.mp4`) : raisons en anglais, carte « Up next » de Kayo, aucune boucle de rechargement.
+- `pnpm test`, `pnpm typecheck`, `pnpm lint` réussis après le passage à l'anglais.
+
+### Incident
+
+- Vers 13 h 30, le serveur de dev rechargeait la page en boucle (environ 70 rechargements en 8 s) : cache `.next` corrompu après un redémarrage. Réglé par `rm -rf .next` et un redémarrage.
+
+### Reste
+
+- **Clé OpenAI** : pas encore posée. Dès qu'elle l'est, « Kayo, plan the day » doit afficher « Source: OpenAI API » et une ligne par appel dans `ai_runs`.
