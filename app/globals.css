@@ -199,3 +199,5 @@ button{cursor:pointer}
 .studio-kayo-row strong{color:var(--orange)}
 .studio-reasons{margin:0 0 16px;padding:0;list-style:none;display:grid;gap:6px;font-size:11px;color:#b8c0ba}
 .studio-reasons b{color:var(--ink);font-weight:600}
+.studio-slot-list{max-height:min(560px,60vh);overflow-y:auto;padding-right:6px;scrollbar-width:thin}
+.preload-next{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}

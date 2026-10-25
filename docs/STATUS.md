@@ -47,3 +47,30 @@
 
 - T2–T6 restent à faire : ingestion/transcription et sous-titres EN/FR, propositions et annonces de Kayo, publicités, chat et modération, pages publiques et relais de diffusion, puis pitch et mise en ligne.
 - Aucune clé OpenAI utilisée ; upload MP4 réel non exercé dans l’interface.
+
+## Nuit du 24 au 25/10 — suite par Claude (Codex à court de crédits après T1)
+
+Commits `6170f0e` et suivants. Codex a construit T0 et T1 ; Claude a fait la suite à la demande de Lionel.
+
+### Fait
+
+- **Catalogue** : 12 vidéos TAS horizontales (9 programmes, 3 pubs maison), droits OK déclarés par Lionel le 24/10 ; les verticales sont retirées. `pnpm media:link` remplace la copie par des liens vers les originaux (1,2 Go de disque rendus). Fiches (résumé, thèmes, ambiance) dans `db/demo-media.json`, reprises en base à chaque démarrage.
+- **Kayo programme la journée** (`/api/studio/grid/[day]/propose`, bouton du studio) : quatre tranches (nuit, matin, après-midi, soirée), une raison par tranche, la journée entière posée bout à bout de minuit à minuit (le dimanche 25/10 fait 25 h), une annonce de Kayo de 8 s avant chaque programme, une pub maison tous les 3 programmes. Avec `OPENAI_API_KEY` : Responses API + Structured Outputs (`lib/kayo.ts`, `lib/openai.ts`, journal dans `ai_runs`). Sans clé : règles fondées sur les fiches.
+- **Annonces de Kayo** à l'antenne : carte de Kayo détouré « Up next … », audio optionnel `media/kayo/<vidéo>.mp3` s'il existe ; l'antenne change de créneau à la seconde près (minuterie sur la fin du créneau) et précharge le programme annoncé.
+- **Pubs maison** : bandeau « PUB · TAS » à l'antenne, jamais autour d'une vidéo YouTube.
+- **Chat en direct** sous l'antenne (`/api/chat`) : pseudo, 1 message toutes les 5 s, modération avant insertion (OpenAI Moderation avec clé, petite liste locale sans), « @kayo » répond à partir de la fiche du programme en cours (Responses API avec clé, fiche brute sans).
+- **Studio** : bouton « Kayo, propose la journée », raisons affichées, lignes d'annonces gardées à l'enregistrement, liste des créneaux défilante.
+- **Grilles publiées** : dimanche 25/10 et lundi 26/10 (jour de la finale), par règles.
+
+### Vérifié
+
+- `pnpm test` : 2 fichiers, 7 tests (dont la journée de 25 h posée bout à bout, annonces et pubs, pas deux fois le même créateur d'affilée) ; `pnpm typecheck` et `pnpm lint` réussis.
+- Antenne vue dans le navigateur : programme en lecture, carte de Kayo entre Summer Breeze et Out of Office, aucune erreur console.
+- Chat : message accepté, insulte refusée par la liste locale, deuxième message en moins de 5 s refusé, réponse de Kayo à « @kayo ».
+- Prises d'écran réelles pour la vidéo : `../video/clips/`.
+
+### Pas fait / limites
+
+- **Aucun appel OpenAI réel** : pas de clé dans `.env.local` cette nuit. Le code des appels (Responses + Structured Outputs, Moderation) est écrit d'après l'API REST, mais n'a pas tourné : à vérifier dès que Lionel colle la clé (« Kayo, propose la journée » doit afficher « API OpenAI » dans la source).
+- **Voix des annonces** : non générée (le modèle de voix local était trop lent, Mac saturé en mémoire ; ElevenLabs demande des téléchargements, que Lionel doit autoriser). Les annonces passent en carte muette.
+- T2 (transcription et sous-titres EN/FR), page Grille publique, formulaire créateur, masquage d'un message du chat depuis le studio, relais vers les réseaux, mise en ligne : non faits.

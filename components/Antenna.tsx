@@ -152,6 +152,8 @@ export default function Antenna() {
             ) : (
               <div className="player-empty"><span className="empty-signal">TAS TV</span><span>Préparation de l’antenne…</span></div>
             )}
+            {/* warm the cache for the program Kayo announces, so the switch is not black */}
+            {next?.item?.kind === "file" && next.item.src && next.item.src !== item?.src && <video className="preload-next" src={next.item.src} preload="auto" muted playsInline aria-hidden="true" />}
             {!started && !isYouTube && <div className="player-pause-cover"><span className="pause-label"><span className="live-dot" /> PRÊT À REGARDER</span></div>}
             {!isYouTube && <div className="player-corner"><span className="corner-live"><span className="live-dot" /> EN DIRECT</span>{isAd(slot) && <span className="corner-ad">PUB · TAS</span>}<span className="corner-time">{current ? parisTime(current.slot.startsAt) : "--:--"}</span></div>}
           </div>
