@@ -63,7 +63,7 @@ create table if not exists chat_messages (
 
 create table if not exists settings (
   id int primary key default 1 check (id = 1),
-  ad_every_n_items int not null default 2,
+  ad_every_n_items int not null default 3,
   ad_item_ids uuid[] not null default '{}'
 );
 

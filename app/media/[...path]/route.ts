@@ -9,7 +9,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ path
   const { path } = await params;
   const root = resolve(process.cwd(), "media");
   const file = resolve(root, ...path);
-  if (!file.startsWith(`${root}${sep}`) || !file.toLowerCase().endsWith(".mp4")) {
+  const type = file.toLowerCase().endsWith(".mp4") ? "video/mp4" : file.toLowerCase().endsWith(".mp3") ? "audio/mpeg" : null;
+  if (!file.startsWith(`${root}${sep}`) || !type) {
     return new Response("Introuvable", { status: 404 });
   }
   try {
@@ -28,7 +29,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ path
     const stream = createReadStream(file, { start, end });
     const headers = new Headers({
       "Accept-Ranges": "bytes",
-      "Content-Type": "video/mp4",
+      "Content-Type": type,
       "Content-Length": String(length),
       "Cache-Control": "public, max-age=3600",
     });

@@ -2,101 +2,216 @@
   {
     "file": "lddmp-ep02-v12-en.mp4",
     "source": "00_VIDEOS_FINALES/LES_DISQUES_DE_MON_PERE_EP02/EP02_EN_SILLAGE_HORIZONTAL_v8.mp4",
-    "title": "Les Disques de mon père — EP02 · En sillage",
+    "title": "Les Disques de mon père — EP02 · Gbeti Madjro",
     "creator": "Les Disques de mon père",
+    "channel_url": "https://techandartsociety.com",
     "lang": "en",
-    "duration_s": 183,
+    "duration_s": 182,
     "rights": "cleared",
-    "rights_note": "Lionel a déclaré le 24/10/2026 disposer des droits de diffusion des épisodes Les Disques de mon père (R-09)."
+    "rights_note": "Lionel a déclaré le 24/10/2026 disposer des droits de diffusion des épisodes Les Disques de mon père (R-09).",
+    "tags": [
+      "musique",
+      "bénin",
+      "archives"
+    ],
+    "mood": "chaleureux",
+    "summary": "Lionel ouvre un disque de la collection de son père : « Gbeti Madjro », du Tout-Puissant Orchestre Poly-Rythmo de Cotonou avec Angélique Kidjo (album Cotonou Club, Strut Records, 2011). Version anglaise."
+  },
+  {
+    "file": "lddmp-ep02-fr.mp4",
+    "source": "00_VIDEOS_FINALES/LES_DISQUES_DE_MON_PERE_EP02/EP02_FR_HORIZONTAL_v8.mp4",
+    "title": "Les Disques de mon père — EP02 · Gbeti Madjro (FR)",
+    "creator": "Les Disques de mon père",
+    "channel_url": "https://techandartsociety.com",
+    "lang": "fr",
+    "duration_s": 182,
+    "rights": "cleared",
+    "rights_note": "Lionel a déclaré le 24/10/2026 disposer des droits de diffusion des épisodes Les Disques de mon père (R-09).",
+    "tags": [
+      "musique",
+      "bénin",
+      "archives"
+    ],
+    "mood": "chaleureux",
+    "summary": "La version française de l'épisode 2 : « Gbeti Madjro », du Tout-Puissant Orchestre Poly-Rythmo de Cotonou avec Angélique Kidjo (album Cotonou Club, Strut Records, 2011)."
   },
   {
     "file": "summer-breeze-v4-en.mp4",
     "source": "00_VIDEOS_FINALES/SUMMER_BREEZE/SUMMER_BREEZE_V4_FINAL_EN_STEN_1080P.mp4",
     "title": "Summer Breeze",
-    "creator": "Tech & Art Society",
+    "creator": "TAS Studio",
+    "channel_url": "https://techandartsociety.com/studio",
     "lang": "en",
-    "duration_s": 213,
+    "duration_s": 212,
     "rights": "cleared",
-    "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo)."
+    "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo).",
+    "tags": [
+      "film",
+      "court métrage"
+    ],
+    "mood": "contemplatif",
+    "summary": "Court métrage de TAS Studio, voix off et sous-titres en anglais."
   },
   {
     "file": "sunday-jams-1080.mp4",
     "source": "00_VIDEOS_FINALES/SEQUENCE_SUNDAY_JAMS/SEQUENCE_FINAL_A_LIRE_1080p.mp4",
     "title": "Sunday Jams",
-    "creator": "Tech & Art Society",
+    "creator": "Third Eye Shot",
+    "channel_url": "https://www.instagram.com/3rdeyeshot/",
     "lang": "en",
-    "duration_s": 61,
+    "duration_s": 60,
     "rights": "cleared",
-    "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo)."
+    "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo).",
+    "tags": [
+      "musique",
+      "live",
+      "photo"
+    ],
+    "mood": "énergique",
+    "summary": "Séquence Sunday Jams signée Third Eye Shot, le regard photo de Lionel."
   },
   {
     "file": "kayo-birth-v6.mp4",
-    "source": "08_MEDIA_STUDIO/KAYO_BIRTH_TEASER/EXPORTS_V6_2026-09-15/KAYO_BIRTH_V6_HORIZONTAL_1080P_EN_STFR.mp4",
-    "title": "Kayo Birth — V6",
+    "source": "00_VIDEOS_FINALES/KAYO_BIRTH/KAYO_BIRTH_HORIZONTAL_STFR_FOND_V6.mp4",
+    "title": "Kayo Birth",
     "creator": "Tech & Art Society",
+    "channel_url": "https://techandartsociety.com",
     "lang": "en",
     "duration_s": 91,
     "rights": "cleared",
-    "rights_note": "Production TAS, catalogue de démonstration."
+    "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo).",
+    "tags": [
+      "film",
+      "ia",
+      "kayo"
+    ],
+    "mood": "épique",
+    "summary": "La naissance de Kayo, le présentateur IA de Tech & Art Society. Film court, sous-titres français."
+  },
+  {
+    "file": "ooo-projection.mp4",
+    "source": "08_MEDIA_STUDIO/PROJECTIONS_OOO_DESIGN_WEEK_2026-09-18/MONTAGE_V1/MASTERS_SANS_QR/OOO_PROJECTION_DEFINITIF_1080p.mp4",
+    "title": "Out of Office — Projection Design Week",
+    "creator": "Tech & Art Society",
+    "channel_url": "https://techandartsociety.com",
+    "lang": "en",
+    "duration_s": 223,
+    "rights": "cleared",
+    "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo).",
+    "tags": [
+      "art",
+      "live",
+      "événement"
+    ],
+    "mood": "hypnotique",
+    "summary": "La projection créée pour la soirée Out of Office pendant la Paris Design Week (18 septembre 2026) : la foule, les machines, les pages du MAG 001."
+  },
+  {
+    "file": "ooo-projection-lente.mp4",
+    "source": "08_MEDIA_STUDIO/PROJECTIONS_OOO_DESIGN_WEEK_2026-09-18/MONTAGE_V1/MASTERS_SANS_QR/OOO_PROJECTION_DEFINITIF_LENT50_1080p.mp4",
+    "title": "Out of Office — Projection, version lente",
+    "creator": "Tech & Art Society",
+    "channel_url": "https://techandartsociety.com",
+    "lang": "en",
+    "duration_s": 447,
+    "rights": "cleared",
+    "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo).",
+    "tags": [
+      "art",
+      "ambiance",
+      "nuit"
+    ],
+    "mood": "planant",
+    "summary": "La projection Out of Office de la Paris Design Week, ralentie de moitié : une version d'ambiance pour la nuit."
+  },
+  {
+    "file": "task-demo-en.mp4",
+    "source": "08_MEDIA_STUDIO/TASK_DEMO_V3_2026-10-15/TASK_V3_DEMO_INVESTISSEURS_EN.mp4",
+    "title": "TASK — la démo, racontée par Kayo",
+    "creator": "Tech & Art Society",
+    "channel_url": "https://techandartsociety.com",
+    "lang": "en",
+    "duration_s": 285,
+    "rights": "cleared",
+    "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo).",
+    "tags": [
+      "tech",
+      "task",
+      "démo"
+    ],
+    "mood": "pédagogique",
+    "summary": "Kayo fait visiter TASK, l'application de TAS pour monter des projets créatifs à plusieurs : briefs, équipes, réseau de confiance. En anglais."
+  },
+  {
+    "file": "task-demo-fr.mp4",
+    "source": "08_MEDIA_STUDIO/TASK_DEMO_V3_2026-10-15/TASK_V3_DEMO_INVESTISSEURS_FR.mp4",
+    "title": "TASK — la démo, racontée par Kayo (FR)",
+    "creator": "Tech & Art Society",
+    "channel_url": "https://techandartsociety.com",
+    "lang": "fr",
+    "duration_s": 287,
+    "rights": "cleared",
+    "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo).",
+    "tags": [
+      "tech",
+      "task",
+      "démo"
+    ],
+    "mood": "pédagogique",
+    "summary": "La version française de la visite de TASK par Kayo : briefs, équipes, réseau de confiance."
   },
   {
     "file": "mag-001-teaser.mp4",
-    "source": "08_MEDIA_STUDIO/TEASER_MAG_001/v1_2026-09-02/TEASER_MAG_001_v1_1080p.mp4",
+    "source": "00_VIDEOS_FINALES/KAYO/KAYO_HORIZONTAL_FINAL_30S.mp4",
     "title": "TAS MAG 001 — teaser",
     "creator": "Tech & Art Society",
-    "lang": "fr",
-    "duration_s": 26,
-    "rights": "cleared",
-    "rights_note": "Publicité maison TAS."
-  },
-  {
-    "file": "kayo-explains-facts-cost-money-en.mp4",
-    "source": "08_MEDIA_STUDIO/KAYO_EXPLAINER/episodes/2026-10-14_FACTS_COST_MONEY/exports/PUBLICATION_FACTS_COST_MONEY_EN.mp4",
-    "title": "Kayo explique — Facts Cost Money",
-    "creator": "Tech & Art Society",
+    "channel_url": "https://techandartsociety.com",
     "lang": "en",
-    "duration_s": 92,
+    "duration_s": 30,
     "rights": "cleared",
-    "rights_note": "Épisode Kayo explique du catalogue TAS."
+    "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo).",
+    "tags": [
+      "pub",
+      "mag",
+      "kayo"
+    ],
+    "mood": "",
+    "summary": "Pub maison : Kayo annonce le MAG 001, le premier numéro du magazine de Tech & Art Society."
   },
   {
-    "file": "kayo-explains-facts-cost-money-fr.mp4",
-    "source": "08_MEDIA_STUDIO/KAYO_EXPLAINER/episodes/2026-10-14_FACTS_COST_MONEY_FR/exports/PUBLICATION_LES_FAITS_COUTENT_CHER_FR.mp4",
-    "title": "Kayo explique — Les faits coûtent cher",
+    "file": "teaser-do-you-en.mp4",
+    "source": "08_MEDIA_STUDIO/TEASER_TAS_2026-10-15/exports/TEASER_TAS_DO_YOU_V1_EN.mp4",
+    "title": "Tech & Art Society — « Do you? »",
     "creator": "Tech & Art Society",
-    "lang": "fr",
-    "duration_s": 89,
-    "rights": "cleared",
-    "rights_note": "Épisode Kayo explique du catalogue TAS."
-  },
-  {
-    "file": "kayo-explains-fake-listeners-en.mp4",
-    "source": "08_MEDIA_STUDIO/KAYO_EXPLAINER/episodes/2026-10-14_FAKE_LISTENERS/exports/PUBLICATION_FAKE_LISTENERS_EN.mp4",
-    "title": "Kayo explique — Fake Listeners",
-    "creator": "Tech & Art Society",
+    "channel_url": "https://techandartsociety.com",
     "lang": "en",
-    "duration_s": 97,
+    "duration_s": 57,
     "rights": "cleared",
-    "rights_note": "Épisode Kayo explique du catalogue TAS."
+    "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo).",
+    "tags": [
+      "pub",
+      "teaser",
+      "kayo"
+    ],
+    "mood": "",
+    "summary": "Pub maison : le teaser « Do you? » de Tech & Art Society, la suite de Kayo Birth."
   },
   {
-    "file": "kayo-explains-fake-listeners-fr.mp4",
-    "source": "08_MEDIA_STUDIO/KAYO_EXPLAINER/episodes/2026-10-14_FAKE_LISTENERS_FR/exports/PUBLICATION_FAUX_AUDITEURS_FR.mp4",
-    "title": "Kayo explique — Faux auditeurs",
+    "file": "teaser-do-you-fr.mp4",
+    "source": "08_MEDIA_STUDIO/TEASER_TAS_2026-10-15/exports/TEASER_TAS_DO_YOU_V1_FR.mp4",
+    "title": "Tech & Art Society — « Do you? » (FR)",
     "creator": "Tech & Art Society",
+    "channel_url": "https://techandartsociety.com",
     "lang": "fr",
-    "duration_s": 104,
+    "duration_s": 57,
     "rights": "cleared",
-    "rights_note": "Épisode Kayo explique du catalogue TAS."
-  },
-  {
-    "file": "kayo-explains-the-door-en.mp4",
-    "source": "08_MEDIA_STUDIO/KAYO_EXPLAINER/episodes/2026-10-14_THE_DOOR/exports/PUBLICATION_THE_DOOR_EN.mp4",
-    "title": "Kayo explique — The Door",
-    "creator": "Tech & Art Society",
-    "lang": "en",
-    "duration_s": 92,
-    "rights": "cleared",
-    "rights_note": "Épisode Kayo explique du catalogue TAS."
+    "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo).",
+    "tags": [
+      "pub",
+      "teaser",
+      "kayo"
+    ],
+    "mood": "",
+    "summary": "Pub maison : le teaser « Do you? » en français."
   }
 ]

@@ -19,14 +19,27 @@ type StudioItem = {
 type GridSlot = {
   id: string;
   starts_at: string;
-  item_id: string;
+  kind?: "item" | "bumper";
+  item_id: string | null;
   title: string;
   duration_s: number;
   rights: StudioItem["rights"];
   creator: string;
+  bumper_text?: string | null;
+  bumper_audio?: string | null;
+  reason?: string | null;
+  tags?: string[] | null;
 };
 
-type GridState = { day: string; status: "draft" | "published"; published_at?: string | null };
+type Proposal = { source: "openai" | "règles"; note: string | null; rotations: Record<string, { itemIds: string[]; reason: string }>; proposedAt: string };
+type GridState = { day: string; status: "draft" | "published"; published_at?: string | null; proposal?: Proposal | null };
+
+const DAYPART_LABELS: Record<string, string> = { nuit: "Nuit · 0 h-7 h", matin: "Matin · 7 h-12 h", "apres-midi": "Après-midi · 12 h-19 h", soiree: "Soirée · 19 h-24 h" };
+
+const slotPayload = (slot: GridSlot) => ({
+  kind: slot.kind ?? "item", itemId: slot.item_id, startsAt: slot.starts_at,
+  bumperText: slot.bumper_text ?? null, bumperAudio: slot.bumper_audio ?? null, reason: slot.reason ?? null,
+});
 
 function parisDayNow() {
   const parts = new Intl.DateTimeFormat("en-CA", {
@@ -269,7 +282,7 @@ export function StudioDashboard() {
     try {
       const result = await responseData<{ saved: number }>(await fetch(`/api/studio/grid/${day}`, {
         method: "PUT", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slots: slots.map((slot) => ({ itemId: slot.item_id, startsAt: slot.starts_at })) }),
+        body: JSON.stringify({ slots: slots.map(slotPayload) }),
       }));
       await loadGrid(day);
       setGrid({ day, status: "draft" });
@@ -283,6 +296,20 @@ export function StudioDashboard() {
     }
   }
 
+  async function proposeDay() {
+    setBusy(true);
+    setNotice("Kayo prépare la journée…");
+    try {
+      const result = await responseData<{ source: string; note: string | null; slots: number }>(await fetch(`/api/studio/grid/${day}/propose`, { method: "POST" }));
+      await loadGrid(day);
+      setNotice(`Proposition de Kayo (${result.source === "openai" ? "API OpenAI" : "règles"}) : ${result.slots} créneaux, annonces et pubs comprises. Relis-la, puis publie.${result.note ? ` ${result.note}` : ""}`);
+    } catch (cause) {
+      setNotice(cause instanceof Error ? cause.message : "Proposition impossible.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function publishGrid() {
     if (slots.length === 0) { setNotice("Ajoute au moins un programme avant de publier."); return; }
     setBusy(true);
@@ -290,7 +317,7 @@ export function StudioDashboard() {
     try {
       await responseData(await fetch(`/api/studio/grid/${day}`, {
         method: "PUT", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slots: slots.map((slot) => ({ itemId: slot.item_id, startsAt: slot.starts_at })) }),
+        body: JSON.stringify({ slots: slots.map(slotPayload) }),
       }));
       const result = await responseData<{ grid: GridState }>(await fetch(`/api/studio/grid/${day}/publish`, { method: "POST" }));
       setGrid(result.grid);
@@ -311,7 +338,7 @@ export function StudioDashboard() {
       </section>
 
       <nav className="studio-tabs" aria-label="Sections du studio">
-        <button className={tab === "grid" ? "is-selected" : ""} onClick={() => setTab("grid")}>Grille <span>{slots.length}</span></button>
+        <button className={tab === "grid" ? "is-selected" : ""} onClick={() => setTab("grid")}>Grille <span>{slots.filter((slot) => slot.kind !== "bumper").length}</span></button>
         <button className={tab === "library" ? "is-selected" : ""} onClick={() => setTab("library")}>Bibliothèque <span>{items.length}</span></button>
       </nav>
 
@@ -325,15 +352,25 @@ export function StudioDashboard() {
               <span className={`studio-status ${grid.status}`}>{grid.status === "published" ? "PUBLIÉE" : "BROUILLON"}</span>
             </div>
             <div className="studio-day-row"><label htmlFor="grid-day">Jour de Paris</label><input id="grid-day" type="date" value={day} onChange={(event) => { setGridBusy(true); setDay(event.target.value); }} /></div>
+            <div className="studio-kayo-row">
+              <p><strong>Kayo, propose la journée.</strong> Il ordonne les programmes par tranche horaire, glisse ses annonces et les pubs maison. Rien ne passe à l’antenne sans ta publication.</p>
+              <button className="studio-primary" onClick={() => void proposeDay()} disabled={busy || gridBusy}>Kayo, propose la journée</button>
+            </div>
+            {grid.proposal && (
+              <ul className="studio-reasons" aria-label="Raisons de Kayo">
+                {Object.entries(grid.proposal.rotations).map(([part, rotation]) => <li key={part}><b>{DAYPART_LABELS[part] ?? part}</b> — {rotation.reason}</li>)}
+                <li><b>Source</b> — {grid.proposal.source === "openai" ? "API OpenAI (Responses, Structured Outputs)" : "règles locales (pas de clé OpenAI)"}</li>
+              </ul>
+            )}
             {gridBusy ? <div className="studio-empty">Chargement de la grille…</div> : slots.length === 0 ? (
               <div className="studio-empty"><span>∅</span><strong>La journée est encore libre.</strong><small>Ajoute des programmes pour préparer l’antenne.</small></div>
             ) : (
               <ol className="studio-slot-list">
                 {slots.map((slot) => (
-                  <li key={slot.id} className="studio-slot">
+                  <li key={slot.id} className={`studio-slot ${slot.kind === "bumper" ? "is-bumper" : ""}`}>
                     <input aria-label={`Heure de ${slot.title}`} type="time" value={inputTime(slot.starts_at)} onChange={(event) => changeSlotTime(slot.id, event.target.value)} />
                     <div className="studio-slot-copy"><strong>{slot.title}</strong><span>{slot.creator} · {duration(slot.duration_s)}</span></div>
-                    <span className="studio-rights-tag cleared">DROITS OK</span>
+                    <span className="studio-rights-tag cleared">{slot.kind === "bumper" ? "KAYO" : slot.tags?.includes("pub") ? "PUB" : "DROITS OK"}</span>
                     <button className="studio-remove" aria-label={`Retirer ${slot.title}`} onClick={() => { setSlots((current) => current.filter((candidate) => candidate.id !== slot.id)); setGrid((current) => ({ ...current, status: "draft" })); }}>×</button>
                   </li>
                 ))}

@@ -6,6 +6,8 @@ export type PlaylistItem = {
   creator?: { name: string; channel_url?: string | null };
   src?: string;
   kind?: "file" | "youtube";
+  tags?: string[];
+  summary?: string | null;
 };
 
 export type Slot = {
@@ -14,6 +16,8 @@ export type Slot = {
   endsAt: string | Date;
   item?: PlaylistItem;
   kind?: "item" | "bumper";
+  bumperText?: string | null;
+  bumperAudio?: string | null;
 };
 
 type LoopSlot = Slot & { item: PlaylistItem };

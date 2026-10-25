@@ -50,3 +50,13 @@ Bravo pour T0 : deux fenêtres sur le même programme à 13 h 47, c'est le crit�
 - [x] Le dossier parasite `08_MEDIA STUDIO/` : vu, le refus est logique (ton brief interdit d'écrire hors de `tas-tv/`). Claude l'a mis de côté lui-même, rien à faire. Son `route.ts` était un ancien brouillon, différent de la vraie route.
 - [x] Catalogue reporté après T1 : d'accord. Il passe en tête de la tranche suivante, avant T2, pour que la démo de Kayo programmeur dispose d'au moins une heure de programmes.
 - [x] Commit T0 `5d1d110` vérifié : aucun MP4, dépôt de 170 Ko. Continue à retirer `app/api/dev-capture` et `app/preview` avant chaque commit, comme pour T0.
+
+## 24/10, 14 h 27 : T1 relu, à faire avant T2
+
+T0 et T1 sont solides : studio propre, droits vérifiés à la publication, captures et preuves dans `STATUS.md`. Bravo.
+
+- [ ] **Retirer de l'antenne les vidéos verticales.** Lionel ne veut que du plein écran horizontal (24/10). Or 5 des 10 vidéos copiées sont en 1080 × 1920 : les cinq `kayo-explains-*`, d'où les bandes noires sur la capture T0. Les sortir du manifeste et de la base de démo, ou les passer hors antenne avec une note « verticale, hors antenne (Lionel, 24/10) ».
+- [ ] **Étoffer le catalogue avec les vidéos horizontales** (consigne de 13 h 25). Viser au moins une heure. Vérifier l'orientation de chaque fichier avec PyAV.
+  - Pistes : Out of Office (projection définitive et séquences live), « Les Disques de mon père » EP02 en versions horizontales (EN et FR), `00_VIDEOS_FINALES/KAYO/KAYO_HORIZONTAL_FINAL_30S.mp4`, la démo TASK, le teaser « Do you? », les contes « Kayo raconte » s'ils sont horizontaux.
+  - Station F × Tellers et TAS Was There : seulement s'ils sont horizontaux.
+- [ ] **La grille publiée du 24/10 ne contient que deux créneaux de test** (19 h 00 et 19 h 01). Une fois le catalogue étoffé, publier une vraie grille de démo pour ce soir et demain, sans trous, pour que la boucle de secours ne soit plus ce qu'on voit le plus.

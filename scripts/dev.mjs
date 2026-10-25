@@ -47,18 +47,24 @@ try {
   for (const demo of demos) {
     const creatorRows = await sql`select id from creators where name = ${demo.creator} limit 1`;
     const creatorId = creatorRows[0]?.id ?? (await sql`
-      insert into creators (name, channel_url, lang)
-      values (${demo.creator}, 'https://techandartsociety.com', ${demo.lang})
-      returning id
+      insert into creators (name, channel_url, lang) values (${demo.creator}, ${demo.channel_url}, ${demo.lang}) returning id
     `)[0].id;
-    const existing = await sql`select id from items where src = ${`/media/${demo.file}`} limit 1`;
-    if (existing.length === 0) {
-      await sql`
-        insert into items (kind, src, title, creator_id, duration_s, lang, rights, rights_note)
-        values ('file', ${`/media/${demo.file}`}, ${demo.title}, ${creatorId}, ${demo.duration_s}, ${demo.lang}, ${demo.rights}, ${demo.rights_note})
-      `;
+    if (creatorRows[0]) await sql`update creators set channel_url = ${demo.channel_url} where id = ${creatorId}`;
+    const fields = {
+      kind: "file", src: `/media/${demo.file}`, title: demo.title, creator_id: creatorId, duration_s: demo.duration_s, lang: demo.lang,
+      rights: demo.rights, rights_note: demo.rights_note, tags: demo.tags ?? [], mood: demo.mood || null, summary: demo.summary ?? null,
+    };
+    const existing = await sql`select id from items where src = ${fields.src} limit 1`;
+    if (existing[0]) {
+      await sql`update items set ${sql(fields, "title", "creator_id", "duration_s", "lang", "rights", "rights_note", "tags", "mood", "summary")} where id = ${existing[0].id}`;
+    } else {
+      await sql`insert into items ${sql(fields)}`;
     }
   }
+  // demo videos that left the manifest disappear, unless a grid still uses them; uploads are never touched
+  const manifestSources = demos.map((demo) => `/media/${demo.file}`);
+  await sql`delete from items i where i.kind = 'file' and i.src like '/media/%' and i.src not like '/media/uploads/%'
+    and i.src <> all(${manifestSources}) and not exists (select 1 from slots s where s.item_id = i.id)`;
   await sql`insert into settings (id) values (1) on conflict (id) do nothing`;
 
   const mode = process.argv.includes("--production") ? "start" : "dev";

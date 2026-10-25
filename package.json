@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "media:copy": "node scripts/copy-media.mjs"
+    "media:link": "node scripts/link-media.mjs"
   },
   "dependencies": {
     "embedded-postgres": "latest",
