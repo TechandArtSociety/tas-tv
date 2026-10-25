@@ -41,3 +41,7 @@ pnpm lint
 ```
 
 Progress, proof and known limits: [docs/STATUS.md](docs/STATUS.md) (French).
+
+## Rights
+
+© 2026 Tech & Art Society. All rights reserved. The code is public so the hackathon jury can read it; no license is granted to reuse it. The videos are not in this repository.
