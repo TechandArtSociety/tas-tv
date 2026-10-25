@@ -10,11 +10,11 @@
     "rights": "cleared",
     "rights_note": "Lionel a déclaré le 24/10/2026 disposer des droits de diffusion des épisodes Les Disques de mon père (R-09).",
     "tags": [
-      "musique",
-      "bénin",
+      "music",
+      "benin",
       "archives"
     ],
-    "mood": "chaleureux",
+    "mood": "warm",
     "summary": "Lionel opens a record from his father's collection: \"Gbeti Madjro\" by the Tout-Puissant Orchestre Poly-Rythmo de Cotonou with Angélique Kidjo (album Cotonou Club, Strut Records, 2011). English version."
   },
   {
@@ -28,11 +28,11 @@
     "rights": "cleared",
     "rights_note": "Lionel a déclaré le 24/10/2026 disposer des droits de diffusion des épisodes Les Disques de mon père (R-09).",
     "tags": [
-      "musique",
-      "bénin",
+      "music",
+      "benin",
       "archives"
     ],
-    "mood": "chaleureux",
+    "mood": "warm",
     "summary": "The French version of episode 2: \"Gbeti Madjro\" by the Tout-Puissant Orchestre Poly-Rythmo de Cotonou with Angélique Kidjo (Cotonou Club, Strut Records, 2011)."
   },
   {
@@ -47,9 +47,9 @@
     "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo).",
     "tags": [
       "film",
-      "court métrage"
+      "short film"
     ],
-    "mood": "contemplatif",
+    "mood": "contemplative",
     "summary": "A short film by TAS Studio, with an English voice-over and subtitles."
   },
   {
@@ -63,11 +63,11 @@
     "rights": "cleared",
     "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo).",
     "tags": [
-      "musique",
+      "music",
       "live",
       "photo"
     ],
-    "mood": "énergique",
+    "mood": "energetic",
     "summary": "A Sunday Jams sequence by Third Eye Shot, Lionel's photography eye."
   },
   {
@@ -82,10 +82,10 @@
     "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo). Version without the I, Robot excerpt (third-party film).",
     "tags": [
       "film",
-      "ia",
+      "ai",
       "kayo"
     ],
-    "mood": "épique",
+    "mood": "epic",
     "summary": "The birth of Kayo, the AI host of Tech & Art Society. Short film, portfolio cut without third-party film excerpts."
   },
   {
@@ -101,9 +101,9 @@
     "tags": [
       "art",
       "live",
-      "événement"
+      "event"
     ],
-    "mood": "hypnotique",
+    "mood": "hypnotic",
     "summary": "The projection made for the Out of Office night during Paris Design Week (18 September 2026): the crowd, the machines, the pages of MAG 001."
   },
   {
@@ -118,10 +118,10 @@
     "rights_note": "Lionel, 24/10/2026 : droits OK pour toutes les vidéos horizontales TAS (démo).",
     "tags": [
       "art",
-      "ambiance",
-      "nuit"
+      "ambient",
+      "night"
     ],
-    "mood": "planant",
+    "mood": "dreamy",
     "summary": "The Out of Office projection from Paris Design Week, slowed down by half: an ambient version for the night."
   },
   {
@@ -137,9 +137,9 @@
     "tags": [
       "tech",
       "task",
-      "démo"
+      "demo"
     ],
-    "mood": "pédagogique",
+    "mood": "educational",
     "summary": "Kayo walks through TASK, the TAS app for running creative projects together: briefs, teams, a trusted network. In English."
   },
   {
@@ -155,9 +155,9 @@
     "tags": [
       "tech",
       "task",
-      "démo"
+      "demo"
     ],
-    "mood": "pédagogique",
+    "mood": "educational",
     "summary": "The French version of Kayo's walk through TASK: briefs, teams, a trusted network."
   },
   {

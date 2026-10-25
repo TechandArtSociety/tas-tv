@@ -12,10 +12,10 @@ export type Program = {
 };
 
 export const DAYPARTS = [
-  { name: "nuit", from: 0, to: 7, label: "Night", likes: ["ambiance", "nuit", "planant", "hypnotique", "art", "contemplatif"] },
-  { name: "matin", from: 7, to: 12, label: "Morning", likes: ["musique", "archives", "chaleureux", "photo", "kayo", "film"] },
-  { name: "apres-midi", from: 12, to: 19, label: "Afternoon", likes: ["tech", "task", "démo", "pédagogique", "archives", "film"] },
-  { name: "soiree", from: 19, to: 24, label: "Evening", likes: ["film", "live", "événement", "épique", "énergique", "art", "musique"] },
+  { name: "nuit", from: 0, to: 7, label: "Night", likes: ["ambient", "night", "dreamy", "hypnotic", "art", "contemplative"] },
+  { name: "matin", from: 7, to: 12, label: "Morning", likes: ["music", "archives", "warm", "photo", "kayo", "film"] },
+  { name: "apres-midi", from: 12, to: 19, label: "Afternoon", likes: ["tech", "task", "demo", "educational", "archives", "film"] },
+  { name: "soiree", from: 19, to: 24, label: "Evening", likes: ["film", "live", "event", "epic", "energetic", "art", "music"] },
 ] as const;
 
 export type DaypartName = (typeof DAYPARTS)[number]["name"];

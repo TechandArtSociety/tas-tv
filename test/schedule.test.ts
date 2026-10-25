@@ -6,12 +6,12 @@ const program = (id: string, creator: string, duration_s: number, tags: string[]
   ({ id, title: id, creator, duration_s, lang: "en", tags, mood, summary: null });
 
 const programs = [
-  program("ooo", "TAS", 223, ["art", "live"], "hypnotique"),
-  program("ooo-lent", "TAS", 447, ["art", "nuit"], "planant"),
-  program("lddmp", "LDDMP", 182, ["musique", "archives"], "chaleureux"),
-  program("sunday", "Third Eye Shot", 60, ["musique", "live"], "énergique"),
-  program("task", "TAS", 285, ["tech", "task"], "pédagogique"),
-  program("film", "TAS Studio", 212, ["film"], "contemplatif"),
+  program("ooo", "TAS", 223, ["art", "live"], "hypnotic"),
+  program("ooo-lent", "TAS", 447, ["art", "night"], "dreamy"),
+  program("lddmp", "LDDMP", 182, ["music", "archives"], "warm"),
+  program("sunday", "Third Eye Shot", 60, ["music", "live"], "energetic"),
+  program("task", "TAS", 285, ["tech", "task"], "educational"),
+  program("film", "TAS Studio", 212, ["film"], "contemplative"),
 ];
 const ads = [program("mag", "TAS", 30, ["pub"])];
 

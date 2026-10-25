@@ -363,7 +363,7 @@ export function StudioDashboard() {
             </div>
             {grid.proposal && (
               <ul className="studio-reasons" aria-label={tr("Kayo’s reasons", "Raisons de Kayo")}>
-                {Object.entries(grid.proposal.rotations).map(([part, rotation]) => <li key={part}><b>{DAYPART_LABELS[part] ? tr(...DAYPART_LABELS[part]) : part}</b> — {rotation.reason}</li>)}
+                {["nuit", "matin", "apres-midi", "soiree"].filter((part) => grid.proposal?.rotations[part]).map((part) => [part, grid.proposal!.rotations[part]] as const).map(([part, rotation]) => <li key={part}><b>{DAYPART_LABELS[part] ? tr(...DAYPART_LABELS[part]) : part}</b> — {rotation.reason}</li>)}
                 <li><b>Source</b> — {grid.proposal.source === "openai" ? tr("OpenAI API (Responses, Structured Outputs)", "API OpenAI (Responses, Structured Outputs)") : tr("local rules (no OpenAI key)", "règles locales (pas de clé OpenAI)")}</li>
               </ul>
             )}
