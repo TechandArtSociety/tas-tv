@@ -4,6 +4,8 @@
 
 Built in one weekend for the OpenAI DevDay Community Hackathon, Paris (24-25 October 2026). How we worked: [docs/PROCESS.md](docs/PROCESS.md).
 
+**Pitch video (2 min max, 1:28):** [docs/pitch/TAS_TV_PITCH_EN.mp4](docs/pitch/TAS_TV_PITCH_EN.mp4)
+
 ## What it does
 
 - **The antenna** (`/`): a full-screen player synced to the server clock, "On air" and "Up next", the creator's credit and link always on screen, English by default with a French toggle.
@@ -44,4 +46,4 @@ Progress, proof and known limits: [docs/STATUS.md](docs/STATUS.md) (French).
 
 ## Rights
 
-© 2026 Tech & Art Society. All rights reserved. The code is public so the hackathon jury can read it; no license is granted to reuse it. The videos are not in this repository.
+© 2026 Tech & Art Society. All rights reserved. The code and the pitch video are public so the hackathon jury can see them; no license is granted to reuse them. The programs aired on TAS TV are not in this repository.
